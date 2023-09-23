@@ -1,30 +1,42 @@
-package Array;
 
-public class reverse {
-	
-	private static void swapElements(int[] arr, int start, int end) {
-        int temp = arr[start];
-        arr[start] = arr[end];
-        arr[end] = temp;
-    }
-	public static void reversee(int a[],int si,int ei) {
-	if(si>ei){
-		return ;
+
+public class Solution {
+
+	public static void spiralPrint(int a[][]){
+	int rows=a.length;
+	if(rows==0){
+		return;
+	}
+	int cols=a[0].length;
+	int cs=0;
+	int ce=cols-1;
+	int rs=0;
+	int re=rows-1;
+
+    while(cs<=ce && rs<=re){   
+	 for(int i=cs;i<=ce;i++){
+		  System.out.print(a[rs][i]+" ");
+	}
+	rs++;
+   
+    for(int i=rs;i<=re;i++){
+	     System.out.print(a[i][ce]+" ");
 	}	
-	swapElements(a,si,ei);
-	reversee(a,si+1,ei-1);		
-	}
+	ce--;
 	
+	if(rs<=re)
+	for(int i=ce;i>=cs;i--){
+		System.out.print(a[re][i]+" ");
+	}	
+	re--;
 	
-	
-		
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-     int a[]= {1,2,3,4,5};
-     reversee(a,0,a.length-1);	
-     for(int i=0;i<a.length;i++) {
-    	 System.out.print(a[i]+ " ");
-     }
-	}
 
+	if(cs<=ce)
+    for(int i=re;i>=rs;i--){
+		System.out.print(a[i][cs]+" ");
+	}
+	cs++;
+  		
+	}
+  }
 }
